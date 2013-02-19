@@ -49,7 +49,7 @@ columns age, fecundity and survival, while \code{promat} takes the output from
 Caswell, H. 2000. Matrix Population Models, 2nd edn. Sinauer, Sunderland,
 Massachusetts.
 Engen, S., Saether, B.-E., Kvalnes, T. and Jensen, H. 2012. Estimating fluctuating
-selection in age-structured populations. Journal of Evolutionary Biology, 00, 000-000.
+selection in age-structured populations. Journal of Evolutionary Biology, 25, 1487-1499.
 }
 \author{
 Thomas Kvalnes

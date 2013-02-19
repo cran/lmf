@@ -10,6 +10,7 @@ residuals against fitted values and a plot of standardized residuals against lev
 indications of cooks distance.
 }
 \usage{
+## S3 method for class 'lmf'
   \method{plot}{lmf}(x, what = "total", ...)
 }
 \arguments{

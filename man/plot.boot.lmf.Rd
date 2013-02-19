@@ -8,6 +8,7 @@ Plots density plots for bootstrap replicates of parameters from objects
 of class "lmf".
 }
 \usage{
+## S3 method for class 'boot.lmf'
   \method{plot}{boot.lmf}(x, what = c("all"), ...)
 }
 \arguments{

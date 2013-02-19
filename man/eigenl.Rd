@@ -33,7 +33,7 @@ l*u = lambda*u and v*l = lambda*v.
 }
 \references{
 Engen, S., Saether, B.-E., Kvalnes, T. and Jensen, H. 2012. Estimating fluctuating
-selection in age-structured populations. Journal of Evolutionary Biology, 00, 000-000.
+selection in age-structured populations. Journal of Evolutionary Biology, 25, 1487-1499.
 }
 \author{
 Thomas Kvalnes

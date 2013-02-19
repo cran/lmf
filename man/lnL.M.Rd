@@ -46,7 +46,7 @@ given temporal variance-covariance matrix M.
 }
 \references{
 Engen, S., Saether, B.-E., Kvalnes, T. and Jensen, H. 2012. Estimating fluctuating
-selection in age-structured populations. Journal of Evolutionary Biology, 00, 000-000.
+selection in age-structured populations. Journal of Evolutionary Biology, 25, 1487-1499.
 }
 \author{
 Thomas Kvalnes

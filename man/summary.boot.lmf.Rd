@@ -5,7 +5,7 @@
 Summarizing bootstraps of lmf fits
 }
 \description{
-\code{summary} for class "boot.lmf".
+\code{summary} method for class "boot.lmf".
 }
 \usage{
   \method{summary}{boot.lmf}(object, ret.bootstraps = FALSE, ...)

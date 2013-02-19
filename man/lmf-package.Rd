@@ -6,8 +6,8 @@ Functions for estimation and inference of selection in age-structured population
 }
 \description{
 This R package estimates directional and fluctuating selection in
-age-structured populations and provides methods for statisical inference using
-the procedures developed by Steinar Engen et al. 2012. Also compatible with
+age-structured populations and provides methods for statistical inference using
+the procedures developed by Engen et al. 2012. Also compatible with
 data without age-structure.
 }
 \details{
@@ -15,7 +15,7 @@ data without age-structure.
 Package: \tab lmf\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
-Date: \tab 2012-04-10\cr
+Date: \tab 2013-02-19\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
@@ -28,5 +28,5 @@ Maintainer: Thomas Kvalnes <thomas.kvalnes@bio.ntnu.no>
 }
 \references{
 Engen, S., Saether, B.-E., Kvalnes, T. and Jensen, H. 2012. Estimating fluctuating
-selection in age-structured populations. Journal of Evolutionary Biology, 00, 000-000.
+selection in age-structured populations. Journal of Evolutionary Biology, 25, 1487-1499.
 }

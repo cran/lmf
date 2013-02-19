@@ -5,7 +5,7 @@
 Summarizing lmf fits
 }
 \description{
-\code{summary} for class "lmf".
+\code{summary} method for class "lmf".
 }
 \usage{
   \method{summary}{lmf}(object, what.level = c("age", "year", "total"), ...)
