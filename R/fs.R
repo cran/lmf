@@ -39,14 +39,20 @@ function(At,
       ret$M <- nearPD(ret$M)
     if(!all(eigen(ret$M)$values > 0))
       ret$M <- nearPD(ret$M)
+    #Estimate the alphas with the optimal covariance matrix, M
+    ret$aM <- lnL.M(D = D.opt$par, At = At, at = at, npar = npar,
+                    ret.alphas = TRUE)
   }
-  else
+  else{
+    # Return empty matrix (filled with NA)
     ret$M <- matrix(rep(NA, npar^2), ncol = npar)
+    # Return empty vector (filled with NA)
+    ret$aM <- rep(NA, npar)
+    # Also return warning
+    warning("optim() did not reach convergence. Temporal covariance matrix (M) and temporal mean coefficients a(M) unavailable")
+  }
   #Add row and column names
   dimnames(ret$M) <- dimnames(At[[1]])
-  #Estimate the alphas with the optimal covariance matrix, M
-  ret$aM <- lnL.M(D = D.opt$par, At = At, at = at, npar = npar,
-                  ret.alphas = TRUE)
   #Output
   ret
 }

@@ -16,6 +16,10 @@ function(formula, data, na.action = na.exclude)
   #Unscaled covariance matrices (the variance-covariance
   #matrix is given by "cov.unscaled * sigma^2")
   ret$Ajt.us <- vcov(mod)/ret$sigma.djt^2
+  # Add if sentence here to account for cases of no variation in y (Wj) Ajt.us should be all zeros and not NaN then.
+  if(ret$sigma.djt == 0){
+    ret$Ajt.us <- vcov(mod)
+  }
   #Leverage
   ret$leverage <- lm.influence(mod, do.coef = FALSE)$hat
   #Cooks distance

@@ -47,7 +47,8 @@ data(sparrowdata)
 #The uniue age classes
 unique.age <- unique(sparrowdata$age)
 #Estimate the projection matrix
-projection.matrix <- promat(pc = procomp(a = sparrowdata, uage = unique.age), nage = length(unique.age))
+pro.comp <- procomp(a = sparrowdata, uage = unique.age)
+projection.matrix <- promat(pc = pro.comp, nage = length(unique.age))
 #Estimate lambda, u and v
 eigenl(pm = projection.matrix)
 }

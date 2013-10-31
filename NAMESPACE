@@ -2,10 +2,12 @@
 export(atCfn, boot.lmf, ci.boot.lmf, eigenl, fs, inv, lm.extract, lmf, lnL.M, nearPD, nfs, procomp, promat, rmnorm, se)
 
 # Methods
-S3method(plot, boot.lmf)
 S3method(plot, lmf)
+S3method(plot, boot.lmf)
+S3method(print, lmf)
 S3method(print, boot.lmf)
 S3method(print, ci.boot.lmf)
-S3method(print, lmf)
-S3method(summary, boot.lmf)
+S3method(print, summary.lmf)
+S3method(print, summary.boot.lmf)
 S3method(summary, lmf)
+S3method(summary, boot.lmf)

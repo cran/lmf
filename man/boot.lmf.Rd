@@ -79,6 +79,12 @@ bootstrap is recomended for most purposes.
 
 The bootstrap procedure is closely associated with the method deployed in
 \code{lmf} and further details can be found in Engen et al. 2012.
+
+Different from Engen et al. 2012, the sigma2.dj is defined as independent gamma
+distributed variables with \emph{shape} = \eqn{\frac{(EX)^2}{Var(X)}} and
+\emph{rate} = \eqn{\frac{EX}{Var(X)}}. Where \emph{X} = \eqn{\hat\sigma^2_{dj}} and 
+using the mean and variance from in the paper.
+
 }
 \value{
 \code{boot.lmf} returns a object of class "boot.lmf".

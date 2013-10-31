@@ -14,17 +14,17 @@ data without age-structure.
 \tabular{ll}{
 Package: \tab lmf\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2013-02-19\cr
+Version: \tab 1.2\cr
+Date: \tab 2013-10-31\cr
 License: \tab GPL-2\cr
 LazyLoad: \tab yes\cr
 }
 }
 \author{
-Thomas Kvalnes, Centre for Conservation Biology, Norwegian University of
+Thomas Kvalnes, Centre for Biodiversity Dynamics, Norwegian University of
 Science and Technology, N-7491 Trondheim, Norway
 
-Maintainer: Thomas Kvalnes <thomas.kvalnes@bio.ntnu.no>
+Maintainer: Thomas Kvalnes <thomas.kvalnes@ntnu.no>
 }
 \references{
 Engen, S., Saether, B.-E., Kvalnes, T. and Jensen, H. 2012. Estimating fluctuating

@@ -78,7 +78,7 @@ function(object,
     #Set up as data frame with alpha estimates in separate columns
     aMt <- do.call(rbind, z$aMboot)
     #Mean of bootstraps
-    aMboot.mean <- colMeans(aMt)
+    aMboot.mean <- colMeans(aMt, na.rm = TRUE)
     #Bias, i.e. estimate - mean from bootstraps
     aMbias <- aMboot.mean - aMest
     #Standard deviation from bootstraps
@@ -110,7 +110,7 @@ function(object,
     #Bias, i.e. estimate - mean from bootstraps
     anfbias <- anfboot.mean - anfest
     #Standard deviation from bootstraps
-    anfboot.sd = apply(anft, 2, sd, na.rm = TRUE)
+    anfboot.sd = apply(anft, 2, sd)
     #Put together as a data frame
     ans$anf <- cbind(estimate = anfest, boot.mean = anfboot.mean,
                      bias = anfbias, boot.sd = anfboot.sd)
@@ -121,12 +121,12 @@ function(object,
     Anft <- array(Reduce(cbind, z$Anfboot),
                   dim = c(z$npar, z$npar, z$nboot))
     #Mean from bootstrap
-    ans$Anfboot.mean <- apply(Anft, 1:2, mean, na.rm = TRUE)
+    ans$Anfboot.mean <- apply(Anft, 1:2, mean)
     dimnames(ans$Anfboot.mean) <- dimnames(ans$Anfest)
     #Bias, i.e. estimate - mean from bootstrap
     ans$Anfbias <- ans$Anfest - ans$Anfboot.mean
     #Standard deviation from bootstrap
-    ans$Anfboot.sd <- apply(Anft, 1:2, sd, na.rm = TRUE)
+    ans$Anfboot.sd <- apply(Anft, 1:2, sd)
     dimnames(ans$Anfboot.sd) <- dimnames(ans$Anfest)
   }
   #Create matrix with the tests of significance for the hypotheses which
@@ -136,14 +136,20 @@ function(object,
   {
     #Extract estimates with se, test-statistic and p-value
     est.aM <- as.vector(z$aM)
-    boot.se.aM <-  apply(z$H0aMboot, 2, sd)
-    n <- colSums(t(t(z$H0aMboot) > as.vector(est.aM)))
-    nsucc.aM <- sapply(n, function(a) min(a, (z$nboot - a)))
-    p <- n / z$nboot
+    boot.se.aM <-  apply(z$H0aMboot, 2, sd, na.rm = TRUE)
+    n <- colSums(t(t(z$H0aMboot) > as.vector(est.aM)), na.rm = TRUE)
+    nsucc.aM <- sapply(n, function(a) min(a, (sum(!is.na(z$H0aMboot[, 1])) - a)))
+    p <- n / sum(!is.na(z$H0aMboot[, 1]))
     pval.aM <- sapply(p, function(a) min((2 * a), 2 * (1 - a)))
     ans$coefficients.H0aMboot <- cbind(est.aM, boot.se.aM, nsucc.aM, pval.aM)
     dimnames(ans$coefficients.H0aMboot) <- list(dimnames(z$aM)[[2]],
                                                 c("Estimate", "Std. Error", "# successes", "Pr(>|(a(M))|)"))
+    if(sum(!is.na(z$H0aMboot[, 1])) < z$nboot){
+      H0aMboot.nboot <- sum(!is.na(z$H0aMboot[, 1]))
+      msg <- sprintf("Only %s bootstraps of temporal mean coefficients under the null hypothesis of fluctuating selection obtained due to lack of convergence. P-values corrected", H0aMboot.nboot)
+      warning(msg, domain = NA)
+    }
+      
   }
   #H0: a=0|M=0
   if(!is.null(z$H0anfboot))
@@ -175,14 +181,14 @@ function(object,
     #Insert names
     colnames(H0Mnfboot) <- paste(unlist(Mnames), "(M|a(M=0))", sep = "")
     #Calculate standard deviation
-    boot.se.M <-  apply(H0Mnfboot, 2, sd)
+    boot.se.M <-  apply(H0Mnfboot, 2, sd, na.rm = TRUE)
     #Calculate the number of simulated numbers above the estimated ones
-    n <- colSums(t(t(H0Mnfboot) > as.vector(est.M)))
+    n <- colSums(t(t(H0Mnfboot) > as.vector(est.M)), na.rm = TRUE)
     #Calculate the number of successes (numbers of times the estimate
     #is larger than the simulated expected values under the null hypothesis)
-    nsucc.M <- sapply(n, function(a) min(a, (z$nboot - a)))
+    nsucc.M <- sapply(n, function(a) min(a, (sum(!is.na(H0Mnfboot[, 1])) - a)))
     #Calculate the proportion n to number of bootstraps
-    p <- n / z$nboot
+    p <- n / sum(!is.na(H0Mnfboot[, 1]))
     #Calculate the p-value
     pval.M <- sapply(p, function(a) min((2 * a), 2 * (1 - a)))
     #Set up matrix
@@ -190,6 +196,11 @@ function(object,
     #Give matrix names
     dimnames(ans$coefficients.H0Mnfboot) <- list(unlist(Mnames),
                                                  c("Estimate", "Std. Error", "# successes", "Pr(>|(M|a)|)"))
+    if(sum(!is.na(H0Mnfboot[, 1])) < z$nboot){
+      H0Mnfboot.nboot <- sum(!is.na(H0Mnfboot[, 1]))
+      msg <- sprintf("Only %s bootstraps of temporal covariance matrix under the null hypothesis of directional, but no fluctuating selection obtained due to lack of convergence. P-values corrected", H0Mnfboot.nboot)
+      warning(msg, domain = NA)
+    }
   }
   #Return bootstraps in a clear way if desired
   if(ret.bootstraps)

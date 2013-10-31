@@ -138,15 +138,17 @@ function(object,
     #Collect the estimate from the model
     ret$sigma2.dj <- x$sigma2.dj
     #Resample (get a matrix with npar columns, one for each age)
-    ret$djboot <- mapply(function(a, b) {rnorm(n = nboot, mean = a, sd = b)},
+#    ret$djboot <- mapply(function(a, b) {rnorm(n = nboot, mean = a, sd = b)},
+#                         x$sigma2.dj, x$sigma2.dj.sd)
+    ret$djboot <- mapply(function(a, b) {rgamma(n = nboot, shape = (a^2)/(b^2), rate = a/(b^2))},
                          x$sigma2.dj, x$sigma2.dj.sd)
     #Assign name to djboot
     ifelse(nboot > 1,
            colnames(ret$djboot) <- paste("sigma2.d", x$uage, sep = ""),
            names(ret$djboot) <- paste("sigma2.d", x$uage, sep = ""))
     #If sigma2.dj contains negative values replace these by zero
-    for(i in 1 : x$nage)
-      ret$djboot[ret$djboot[, i] < 0, ] <- 0
+#    for(i in 1 : x$nage)
+#      ret$djboot[ret$djboot[, i] < 0, ] <- 0
     #sigma.d resampling
     #Collect the estimate from the model
     ret$sigma2.d <- x$sigma2.d
@@ -299,6 +301,8 @@ function(object,
         #in sigma2.dj which was resampled earlier
         for(i in bootno)
         {
+          # alphas are assumed multinormally distributed with covariance matrix M,
+          # see Appendix A.
           ret$H0aMboot[i, ] <- rmnorm(n = 1, mean = aexp, varcov = ret$Mboot[[i]])
         }
       }
