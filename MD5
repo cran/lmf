@@ -1,5 +1,5 @@
-516eca09f519ffe2ad977b18f47bf20d *DESCRIPTION
-ff4f57877affff6394ceb61dbf9162a3 *NAMESPACE
+489ae27e4a735a0fe16e1cf509cfe16a *DESCRIPTION
+f7d654dbfc9aeb9027a3d5fd13b28fb4 *NAMESPACE
 4a86c4f3020abb5225703d308cf23495 *R/atCfn.R
 2b79faefba6c38e40614f34b6dbc8686 *R/boot.lmf.R
 ba611372f60939d0c41cbdc038e25ab2 *R/ci.boot.lmf.R
@@ -7,7 +7,6 @@ c4754484429318f7c05eb213c8fc5cfc *R/eigenl.R
 331942e7cc0cd8a258e2017fa2625589 *R/fs.R
 d2a09edcdd2667a391fb3c7e4312cdf2 *R/inv.R
 49a0cfd0869cf269e2fff3c83acd7e0c *R/lm.extract.R
-c6ab1af4661bf2921d07904b39a69daa *R/lmf-internal.R
 7ad38d7073f876efe4ea0fbb4b39951f *R/lmf.R
 9c8f59e35fce96fe8bde24cf0dc345f0 *R/lnL.M.R
 061c625c41de43aa7ff87962faba9e5c *R/nearPD.R
@@ -25,7 +24,7 @@ e73347f4f8f85b1f1fc1937f772d0f4d *R/rmnorm.R
 19600dde4b6b3d186f2af611116b2685 *R/se.R
 a666cebfbc60ed9e9fe33f7e15ef8aa7 *R/summary.boot.lmf.R
 eab43bd33435c54d3923f94e149beeda *R/summary.lmf.R
-33ea796c053133332358152d24b622a5 *data/sparrowdata.rda
+995e08969e4665d9faa67c51bd03f4b9 *data/sparrowdata.rda
 9ebd17a27e05c51d8a0e7cdaaae8bc6c *man/atCfn.Rd
 ea6b60ecec909c93200f533c4d1906e9 *man/boot.lmf.Rd
 94fcad72a696068469f166516d1ace50 *man/ci.boot.lmf.Rd

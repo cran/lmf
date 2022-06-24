@@ -11,3 +11,13 @@ S3method(print, summary.lmf)
 S3method(print, summary.boot.lmf)
 S3method(summary, lmf)
 S3method(summary, boot.lmf)
+
+importFrom("grDevices", "dev.interactive", "devAskNewPage",
+           "extendrange")
+importFrom("graphics", "abline", "axis", "legend", "lines",
+           "panel.smooth", "par", "title")
+importFrom("stats", "cooks.distance", "density", "deviance",
+           "df.residual", "lm", "lm.influence", "na.exclude", "optim",
+           "predict", "printCoefmat", "pt", "qqline", "qqnorm",
+           "quantile", "residuals", "rgamma", "rnorm", "sd", "terms",
+           "update.formula", "var", "vcov", "xtabs")
